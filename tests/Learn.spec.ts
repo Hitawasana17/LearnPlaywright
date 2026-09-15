@@ -19,4 +19,5 @@ test('learn pw on website formy project-autocomplete page', async ({ page }) => 
   await page.getByPlaceholder('State').fill('South Jakarta')
   await page.getByPlaceholder('Zip code').fill('11240')
   await page.getByPlaceholder('Country').fill('Indonesia')
+
 });
