@@ -1,7 +1,6 @@
 import { test, expect, Page} from '@playwright/test';
 
-
-async function fillDatePicker(page: Page, manualDate?: string){
+export async function fillDatePicker(page: Page, manualDate?: string){
   let dateToFill: string;
 
   if (manualDate){
@@ -27,9 +26,5 @@ test('learn pw on website formy project-Datepicker page', async ({ page }) => {
 
   //validasi
   await expect(page).toHaveURL('https://formy-project.herokuapp.com/datepicker');
-
-  //Locator dari Playwright UI
-  // await fillDatePicker(page);
-
-  await fillDatePicker(page, '12/25/2026');
+  await fillDatePicker(page);
 });
