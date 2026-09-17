@@ -18,12 +18,11 @@ export async function fillDatePicker(page: Page, manualDate?: string){
   await dateInput.press('Enter');
 }
 test('learn pw on website formy project-Datepicker page', async ({ page }) => {
-  await page.goto('https://formy-project.herokuapp.com/', { timeout: 40000 });
-
-
-  await page.getByRole('link', {name:'Datepicker'}).click()
-  await page.waitForTimeout(3000)
-
+  await page.goto('https://formy-project.herokuapp.com/', {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  });
+  await page.getByRole('link', { name: 'Datepicker', exact: true }).click();
   //validasi
   await expect(page).toHaveURL('https://formy-project.herokuapp.com/datepicker');
   await fillDatePicker(page);
