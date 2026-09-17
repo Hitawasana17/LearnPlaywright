@@ -23,9 +23,12 @@ export async function clickButton(page: Page){
   await page.getByRole('link', {name: 'Dropdown link 2'}).click();
 }
 test('learn pw on website formy project-button page', async ({ page }) => {
-  await page.goto('https://formy-project.herokuapp.com/buttons', {timeout: 60000});
+  await page.goto('https://formy-project.herokuapp.com/', {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  });
+  await page.getByRole('link', { name: 'Buttons ', exact: true }).click();
 
-  //validasi
   await expect(page).toHaveURL('https://formy-project.herokuapp.com/buttons');
 
   //Locator dari Playwright UI

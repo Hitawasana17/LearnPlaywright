@@ -15,14 +15,12 @@ export async function clickAllRadioButton(page:Page){
   }
 }
 test('learn pw on website formy project-Radio button page', async ({ page }) => {
-  await page.goto('https://formy-project.herokuapp.com/', { timeout: 60000 });
+  await page.goto('https://formy-project.herokuapp.com/', {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  });
+  await page.getByRole('link', { name: 'Radio Button', exact: true }).click();
 
-  // await page.locator('[href="/autocomplete"]').nth(1).click()
-
-  await page.getByRole('link', {name:'Radio button'}).click()
-  await page.waitForTimeout(3000)
-
-  //validasi
   await expect(page).toHaveURL('https://formy-project.herokuapp.com/radiobutton');
   await clickAllRadioButton(page);
 });
