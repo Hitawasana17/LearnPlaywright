@@ -11,6 +11,9 @@ export async function fillAutoComplete(page:Page){
 }
 
 test('website formy project-autocomplete page', async ({ page }) => {
+  await page.goto('https://formy-project.herokuapp.com/autocomplete');
+
   await expect(page).toHaveURL('https://formy-project.herokuapp.com/autocomplete');
+
   await fillAutoComplete(page);
 });
